@@ -17,6 +17,8 @@ export default function Home() {
     const res = await modal.universalAdapter?.getWalletConnectProvider();
 
     console.log("🚀 ~ res?.events.on ~ res?.events:", res?.events);
+
+    // 只有监听到连接钱包的 deeplink 才需要用 openLink 打开
     res?.events.on("display_uri", (uri) => {
       (window as any).Telegram!.WebApp.openLink(`https://bkcode.vip/wc?uri=${encodeURIComponent(uri)}`, {
         try_browser: true,
@@ -34,6 +36,7 @@ export default function Home() {
         onClick={() => {
           signMessage({ message: "hello world" });
 
+          // signMessage 和 sendTx 会通过 wss 和钱包传输数据，所以需要用 tg sdk 手动跳转到 BGW
           (window as any).Telegram!.WebApp.openLink(`https://bkcode.vip`, {
             try_browser: true,
           });
