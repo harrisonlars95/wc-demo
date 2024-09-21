@@ -17,7 +17,7 @@ if (!projectId) {
 const metadata = {
   name: "appkit-example-scroll",
   description: "AppKit Example - Scroll",
-  url: "http://wc.gosheepstudio.com/", // origin must match your domain & subdomain
+  url: "https://wc.gosheepstudio.com/", // origin must match your domain & subdomain
   icons: ["https://avatars.githubusercontent.com/u/179229932"],
 };
 
