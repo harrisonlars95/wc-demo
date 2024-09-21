@@ -16,8 +16,9 @@ export default function Home() {
 
     const res = await modal.universalAdapter?.getWalletConnectProvider();
 
+    console.log("🚀 ~ res?.events.on ~ res?.events:", res?.events);
     res?.events.on("display_uri", (uri) => {
-      window.Telegram!.WebApp.openLink(`https://bkcode.vip/wc?uri=${encodeURIComponent(uri)}`, {
+      (window as any).Telegram!.WebApp.openLink(`https://bkcode.vip/wc?uri=${encodeURIComponent(uri)}`, {
         try_browser: true,
       });
     });
@@ -25,8 +26,8 @@ export default function Home() {
 
   return (
     <div className="p-1 flex flex-col text-wrap break-words">
+      <p>Tst: deeplink</p>
       <button onClick={handleOpenModal}>Connect Bitget</button>
-      <span>Tst: deeplink</span>
       <p>address: {address}</p>
 
       <button onClick={() => signMessage({ message: "hello world" })}>Sign message</button>
