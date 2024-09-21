@@ -1,5 +1,6 @@
 "use client";
-import { useAppKit } from "@reown/appkit/react";
+import { modal } from "@/context";
+import { useAppKit, useAppKitEvents } from "@reown/appkit/react";
 import { parseEther } from "viem";
 import { useAccount, useSendTransaction, useSignMessage, useSwitchChain } from "wagmi";
 
@@ -10,8 +11,14 @@ export default function Home() {
 
   const { sendTransaction, data: hash } = useSendTransaction();
 
-  const handleOpenModal = () => {
+  const handleOpenModal = async () => {
     open();
+
+    const res = await modal.universalAdapter?.getWalletConnectProvider();
+
+    res?.events.on("display_uri", (uri) => {
+      window.open(`https://bkcode.vip/wc?uri=${encodeURIComponent(uri)}`);
+    });
   };
 
   return (

@@ -18,6 +18,14 @@ export const match: CaipNetwork = {
   rpcUrl: "https://rpc.matchain.io",
 };
 
+// Set up metadata
+export const metadata = {
+  name: "appkit-example-scroll", // 会展示到 wallet
+  description: "AppKit Example - Scroll", // 会展示到 wallet
+  url: "https://wc.gosheepstudio.com", // 必须匹配 cloud 中验证的主域名或子域名
+  icons: ["https://avatars.githubusercontent.com/u/179229932"], // 会展示到 wallet
+};
+
 //Set up the Wagmi Adapter (Config)
 export const wagmiAdapter = new WagmiAdapter({
   storage: createStorage({
