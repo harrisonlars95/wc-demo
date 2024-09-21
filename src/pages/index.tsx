@@ -17,7 +17,9 @@ export default function Home() {
     const res = await modal.universalAdapter?.getWalletConnectProvider();
 
     res?.events.on("display_uri", (uri) => {
-      window.open(`https://bkcode.vip/wc?uri=${encodeURIComponent(uri)}`);
+      window.Telegram!.WebApp.openLink(`https://bkcode.vip/wc?uri=${encodeURIComponent(uri)}`, {
+        try_browser: true,
+      });
     });
   };
 
