@@ -24,6 +24,7 @@ export default function Home() {
   return (
     <div className="p-1 flex flex-col text-wrap break-words">
       <button onClick={handleOpenModal}>Connect Bitget</button>
+      <span>Tst: deeplink</span>
       <p>address: {address}</p>
 
       <button onClick={() => signMessage({ message: "hello world" })}>Sign message</button>
