@@ -16,7 +16,7 @@ if (typeof window !== "undefined") {
         uri = `https://www.okx.com/download?deeplink=${encodeURIComponent(args[0])}`;
       } else if (args[0].match(/^bitkeep:\/\//)) {
         uri = args[0].replace(/bitkeep:\/\//, "https://bkcode.vip/");
-      }
+      } 
 
       console.log("🚀 ~ apply ~ uri:", uri);
       if (uri) {
