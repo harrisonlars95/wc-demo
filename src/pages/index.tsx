@@ -8,13 +8,25 @@ if (typeof window !== "undefined") {
   // 劫持 window.open ，如果是打开的是 bitkeep 协议则直接用 miniapp 的app 打开
   (window as any).open = new Proxy((window as any).open, {
     apply(target, ctx, args) {
-      if (args[0].match(/^bitkeep:\/\//)) {
-        const uri = args[0].replace(/bitkeep:\/\//, "https://bkcode.vip/");
+      console.log("🚀 ~ apply ~ args:", args, ctx);
+      let uri;
+      if (args[0].match(/^tpoutside:\/\//)) {
+        uri = args[0].replace(/tpoutside:\/\//, "https://www.mytokenpocket.vip/");
+      } else if (args[0].match(/^metamask:\/\//)) {
+        uri = args[0].replace(/metamask:\/\//, "https://metamask.app.link/");
+      } else if (args[0].match(/^okex:\/\//)) {
+        uri = `https://www.okx.com/download?deeplink=${encodeURIComponent(args[0])}`;
+      } else if (args[0].match(/^bitkeep:\/\//)) {
+        uri = args[0].replace(/bitkeep:\/\//, "https://bkcode.vip/");
+      } else {
+        return target(...args);
+      }
+
+      console.log("🚀 ~ apply ~ uri:", uri);
+      if (uri) {
         (window as any).Telegram!.WebApp.openLink(uri, {
           try_browser: true,
         });
-      } else {
-        return target(...args);
       }
     },
   });
@@ -29,7 +41,6 @@ export default function Home() {
 
   const handleOpenModal = async () => {
     open();
-
 
     // 浏览器劫持之后就不需要监听 display_uri 事件
     // const res = await modal.universalAdapter?.getWalletConnectProvider();
