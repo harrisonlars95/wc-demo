@@ -10,16 +10,12 @@ if (typeof window !== "undefined") {
     apply(target, ctx, args) {
       console.log("🚀 ~ apply ~ args:", args, ctx);
       let uri;
-      if (args[0].match(/^tpoutside:\/\//)) {
-        uri = args[0].replace(/tpoutside:\/\//, "https://www.mytokenpocket.vip/");
-      } else if (args[0].match(/^metamask:\/\//)) {
+      if (args[0].match(/^metamask:\/\//)) {
         uri = args[0].replace(/metamask:\/\//, "https://metamask.app.link/");
       } else if (args[0].match(/^okex:\/\//)) {
         uri = `https://www.okx.com/download?deeplink=${encodeURIComponent(args[0])}`;
       } else if (args[0].match(/^bitkeep:\/\//)) {
         uri = args[0].replace(/bitkeep:\/\//, "https://bkcode.vip/");
-      } else {
-        return target(...args);
       }
 
       console.log("🚀 ~ apply ~ uri:", uri);
