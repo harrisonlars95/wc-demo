@@ -9,7 +9,7 @@ if (typeof window !== "undefined") {
   (window as any).open = new Proxy((window as any).open, {
     apply(target, ctx, args) {
       console.log("🚀 ~ apply ~ args:", args, ctx);
-      (window as any).Telegram!.WebView.postEvent("web_app_open_link", false, { url: args[0] });
+      (window as any).Telegram!.WebView.postEvent("web_app_open_link", true, { url: args[0] });
       // let uri;
       // if (args[0].match(/^metamask:\/\//)) {
       //   uri = args[0].replace(/metamask:\/\//, "https://metamask.app.link/");
