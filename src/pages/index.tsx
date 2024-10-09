@@ -11,7 +11,7 @@ if (typeof window !== "undefined") {
       console.log("🚀 ~ apply ~ args:", args, ctx);
       let uri = args[0];
 
-      (window as any).Telegram!.WebView.postEvent("web_app_open_link", true, { url: uri, try_browser: true });
+      (window as any).Telegram!.WebView.postEvent("web_app_open_link", false, { url: uri, try_browser: true });
 
       // if (args[0].match(/^metamask:\/\//)) {
       //   uri = args[0].replace(/metamask:\/\//, "https://metamask.app.link/");
@@ -54,7 +54,7 @@ export default function Home() {
 
   return (
     <div className="p-1 flex flex-col text-wrap break-words">
-      <p>Tst: 0004</p>
+      <p>Tst: 0005</p>
       <button onClick={handleOpenModal}>Connect Bitget</button>
       <p>address: {address}</p>
 
