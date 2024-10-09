@@ -9,8 +9,7 @@ if (typeof window !== "undefined") {
   (window as any).open = new Proxy((window as any).open, {
     apply(target, ctx, args) {
       console.log("🚀 ~ apply ~ args:", args, ctx);
-      window.location.href = args[0]
-
+      (window as any).Telegram!.WebView.postEvent("web_app_open_link", false, { url: args[0] });
       // let uri;
       // if (args[0].match(/^metamask:\/\//)) {
       //   uri = args[0].replace(/metamask:\/\//, "https://metamask.app.link/");
@@ -18,7 +17,7 @@ if (typeof window !== "undefined") {
       //   uri = `https://www.okx.com/download?deeplink=${encodeURIComponent(args[0])}`;
       // } else if (args[0].match(/^bitkeep:\/\//)) {
       //   uri = args[0].replace(/bitkeep:\/\//, "https://bkcode.vip/");
-      // } 
+      // }
 
       // console.log("🚀 ~ apply ~ uri:", uri);
       // if (uri) {
