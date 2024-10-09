@@ -53,7 +53,7 @@ export default function Home() {
 
   return (
     <div className="p-1 flex flex-col text-wrap break-words">
-      <p>Tst: 001</p>
+      <p>Tst: 002</p>
       <button onClick={handleOpenModal}>Connect Bitget</button>
       <p>address: {address}</p>
 
